@@ -1,0 +1,2 @@
+打開cmd到hw3的位置後輸入指令
+.\hw3_test.sh .\test.csv .\predict.csv
