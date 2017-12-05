@@ -1,3 +1,4 @@
+import os
 import sys
 import re
 import csv
@@ -18,8 +19,9 @@ MAX_SEQUENCE_LENGTH = 20
 EMBEDDING_DIM = 300
 VALIDATION_SPLIT = 0.1
 
+save_path = os.path.dirname(os.path.realpath(__file__))
 weights_path = 'https://www.dropbox.com/s/3xs6lc9i16vhb3c/RNN.h5?dl=1'
-BEST_MODLE = get_file('RNN.h5',weights_path)
+BEST_MODLE = get_file('RNN.h5', weights_path, cache_subdir=save_path)
 TOKENIZER  = 'tokenizer.pickle'
 TEST_FILE  = sys.argv[1]
 PREDICT    = sys.argv[2]
