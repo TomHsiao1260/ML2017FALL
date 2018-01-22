@@ -1,0 +1,6 @@
+model_checkpoint_path: "model_epoch_16_step_42"
+all_model_checkpoint_paths: "model_epoch_15_step_153"
+all_model_checkpoint_paths: "model_epoch_15_step_183"
+all_model_checkpoint_paths: "model_epoch_15_step_213"
+all_model_checkpoint_paths: "model_epoch_16_step_12"
+all_model_checkpoint_paths: "model_epoch_16_step_42"

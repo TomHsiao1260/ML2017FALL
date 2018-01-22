@@ -1,0 +1,35 @@
+<模塊下載>
+  ---tqdm
+  ---opencc
+
+----------------------------------------------------------------
+<setup 執行>
+
+cd 到 final/src 執行 python3 setup.py
+(完成後會在final/src/Input資料夾產生wiki.zh.vec)
+(完成後會在final/src/model/model資料夾產生model_epoch_16_step_42.data)
+
+----------------------------------------------------------------
+<preprocess 執行>
+
+cd 到 final/src 執行 python3 process.py 
+(完成後會在final/src/Input資料夾產生所有preprocess的檔案)
+
+----------------------------------------------------------------
+<testing 執行>
+
+cd 到 final/src 執行 python3 model.py
+(會在final/src/mode/model路徑產生predict.csv)
+
+----------------------------------------------------------------
+<ensemble 執行>
+
+cd 到 final/src/model 執行 python3 predict.py 
+(會將final/src/model/predict內的predict_8,9,10做ensemble，並產生ensemble.csv)
+
+----------------------------------------------------------------
+note: predict.csv 為 M10，Kaggle 成績 0.4646
+      ensemble.csv 為 M8+M9+M10 ，Kaggle 成績 0.4914
+
+
+

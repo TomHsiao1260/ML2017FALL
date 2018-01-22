@@ -1,0 +1,53 @@
+note: 如果只是要可以執行的話，可以不用讀這個檔
+
+<Input>
+  ---wiki.zh.vec: facebook 的 word embedding
+  ---train-v1.1.json: training data
+  ---test-v1.1.json: testing data
+  ---glove.np: 將 wiki.zh.vec 存成 np.array
+  ---dictionary.txt: 所有 tokens 的 dict (觀看用)
+  ---dictionary.pkl: 所有 tokens 的 dict (執行用)
+  ---<trainset>
+       ---words_context.txt: training data 的 context 以 dict 表示
+       ---words_questions.txt: training data 的 questions 以 dict 表示
+       ---indices.txt: training data 的 answer start 和 stop
+  ---<validset>
+       ---與 trainset 相似，作為 validation set
+  ---<testset>
+       ---words_context.txt: testing data 的 context 以 dict 表示
+       ---words_questions.txt: testing data 的 questions 以 dict 表示
+       ---label_context.txt: 紀錄 testing data 中 context 被 jeiba 切斷的位置
+       ---id_question.txt: 紀錄 testing data 中每筆問題的 id
+
+<model>
+  ---<model>
+       ---<model_1> (1~10 以此類推)
+            ---checkpoint/events.out.tfevents/graph.pbtxt: 紀錄 train model 的進度
+            ---model_epoch_x_step_y.data/index/meta: model 的參數
+            ---predict.csv: 此 model 的 predict 檔
+            ---score.txt: 此 model 在 validation set 與 Kaggle 的成績
+       ---<model_train>
+            ---儲存所有的model
+  ---<predict>
+       ---predict_1.csv: 等同於 model/model/model_1 裡的 predict.csv (1~10 以此類推)
+       ---ensemble.csv: 執行 model/predict.csv 後產生的 ensemble 檔
+       ---test-v1.1.json: testing data
+       
+data_load.py: 負責將 preprocess 好的 data load 進來，以便 model.py 執行
+
+evaluate.py: 負責計算 f1 score
+
+GRU.py: GRU cell
+
+layers.py: 基本模塊如 BGRU / Pointer Network / Attention RNN ...
+
+model.py: build + execute model
+
+params.py: 各種參數
+
+process.py: preprocess 的執行檔
+
+setup.py: setup 的執行檔
+
+zoneout.py: 默認為 False，不會執行此 py 檔
+
